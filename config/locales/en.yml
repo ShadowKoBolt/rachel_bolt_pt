@@ -13,6 +13,9 @@ en:
   consent:
     show:
       medical: 'Have you ever had or experienced?'
+      submit: 'Submit'
+    update:
+      success: 'Information saved'
   activerecord:
     models:
       user:
@@ -26,6 +29,8 @@ en:
         smoke: "Do you smoke?"
         pregnant: "Are you pregnant?"
         medical_other: "Other medical issues"
+        accept_1: 'Liability waiver'
+        accept_2: 'Terms & conditions'
   activerecord:
     attributes:
       user:

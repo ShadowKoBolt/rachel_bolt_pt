@@ -3,4 +3,25 @@ class ConsentController < SecureController
     @user = current_user
     @user = User::Consent.new(@user)
   end
+
+  def update
+    @user = current_user
+    @user = User::Consent.new(@user)
+    if @user.validate(user_params)
+      redirect_to root_path, notice: t('.success')
+    else
+      render action: :show
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :date_of_birth, :address, :mobile, :occupation,
+                                 :support_contact, :catchup_contact, :skype_username, :smoke, :pregnant, :medical_heart,
+                                 :medical_chest_pain, :medical_dizzy, :medical_high_blood_pressure, :medical_arthritis,
+                                 :medical_asthma, :medical_bone_or_joint_problems, :medical_back_problems,
+                                 :medical_epilepsy, :medical_sports_injury, :medical_depression, :medical_other,
+                                 :accept_1, :accept_2)
+  end
 end

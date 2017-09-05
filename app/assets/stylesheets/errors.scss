@@ -9,3 +9,7 @@
     @extend .list-unstyled;
   }
 }
+
+.field_with_errors {
+  color: $brand-danger;
+}

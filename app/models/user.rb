@@ -40,6 +40,11 @@ class User < ApplicationRecord
                :medical_dizzy, :medical_high_blood_pressure, :medical_arthritis, :medical_asthma,
                :medical_bone_or_joint_problems, :medical_back_problems, :medical_epilepsy, :medical_sports_injury,
                :medical_depression, :medical_other
+    property :accept_1, virtual: true
+    property :accept_2, virtual: true
+
+    validates :first_name, :last_name, :mobile, presence: true
+    validate :accept_terms
 
     def options_for_support_contact
       [ 'Whatsapp', 'Email', 'Text', 'Facebook messenger' ]
@@ -47,6 +52,13 @@ class User < ApplicationRecord
 
     def options_for_catchup_contact
       [ 'Skype', 'Phone', 'Email' ]
+    end
+
+    private
+
+    def accept_terms
+      errors.add(:accept_1, 'must be accepted') if accept_1 != '1'
+      errors.add(:accept_2, 'must be accepted') if accept_2 != '1'
     end
   end
 end

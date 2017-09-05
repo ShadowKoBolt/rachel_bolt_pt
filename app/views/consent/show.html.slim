@@ -1,43 +1,45 @@
 h1.mb5.text-center Consent
 
 = form_for @user, url: consent_path do |f|
-  .row
-    .col-sm-6
+  = render 'layouts/errors', errors: f.object.errors.full_messages
+  .row.mb3
+    .col-sm-4
       .form-group
         = f.label :first_name
-        = f.text_field :first_name, class: 'form-control'
-    .col-sm-6
+        = f.text_field :first_name, class: 'form-control', autofocus: true
+    .col-sm-4
       .form-group
         = f.label :last_name
         = f.text_field :last_name, class: 'form-control'
-  .row
-    .col-sm-6
+    .col-sm-4
       .form-group
         = f.label :mobile
         = f.text_field :mobile, class: 'form-control'
+  .row.mb3
     .col-sm-6
       .form-group
         = f.label :date_of_birth
         = f.text_field :date_of_birth, class: 'form-control', type: 'date'
-  .row
+    .col-sm-6
+      .form-group
+        = f.label :occupation
+        = f.text_field :occupation, class: 'form-control'
+  .row.mb5
     .col-sm-6
       .form-group
         = f.label :address
         = f.text_area :address, rows: 8, class: 'form-control'
     .col-sm-6
       .form-group
-        = f.label :occupation
-        = f.text_field :occupation, class: 'form-control'
-      .form-group
         = f.label :support_contact
         = f.select :support_contact, f.object.options_for_support_contact, {}, class: 'form-control'
       .form-group
         = f.label :catchup_contact
         = f.select :catchup_contact, f.object.options_for_catchup_contact, {}, class: 'form-control'
-      .form-group
+      .form-group data-js-id='skype-username'
         = f.label :skype_username
         = f.text_field :skype_username, class: 'form-control'
-  .row
+  .row.mb5
     .col-sm-6
       = f.label :smoke
       .radio
@@ -113,7 +115,7 @@ h1.mb5.text-center Consent
           = f.check_box :medical_depression
           = User.human_attribute_name :medical_depression
 
-  .row
+  .row.mb4
     .col-sm-4
       .checkbox
         label
@@ -126,8 +128,48 @@ h1.mb5.text-center Consent
           = User.human_attribute_name :medical_back_problems
     .col-sm-4
 
-  .row
+  .row.mb5
     .col-xs-12
       .form-group
         = f.label :medical_other
         = f.text_field :medical_other, class: 'form-control'
+
+  .row
+    .col-xs-12
+      .checkbox
+        = f.label :accept_1 do
+          = f.check_box :accept_1
+          | I understand that Rachel is not able to provide me with medical advice with regard to any medical conditions I may have and that this information is used only as a guideline to the limitations of my ability to exercise. I will not hold Rachel liable in any way for any injuries that may occur while I am training.
+
+  .row
+    .col-xs-12
+      .checkbox
+        = f.label :accept_2 do
+          = f.check_box :accept_2
+          = "I have read the "
+          = link_to 'terms and conditions', href='#', data: { toggle: 'modal', target: '#terms-and-conditions' }
+
+  .row
+    .col-xs-12.text-right
+      = f.submit t('.submit'), class: 'btn btn-primary btn-lg'
+
+.modal.fade role="dialog" tabindex="-1" id="terms-and-conditions"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        button.close aria-label="Close" data-dismiss="modal" type="button"
+          span aria-hidden="true"  ×
+        h4.modal-title Terms & conditions
+      .modal-body
+        h4 Description of Potential Risks
+        p I understand that the exercise program is designed to place a gradually increasing workload on the cardiovascular and muscular systems and thereby improve their functions. The reaction of the cardiovascular and muscular system to such exercise cannot always be predicted with complete accuracy. I understand that there is a risk of certain changes that might occur during or following exercise. These changes could relate to blood pressure or heart rate.
+        h4 Description of Potential Benefits
+        p I understand that a program of regular exercise has been shown to be beneficial. Some of these benefits include:
+        ul
+          li A decrease in the risk of heart disease
+          li A decrease in body fat
+          li Improved blood pressure
+          li Improvement in psychological function
+          li Improvement in aerobic fitness
+        h4 Payment policy
+        p I understand that late or cancelled payments without warning may result in cessation of service.
