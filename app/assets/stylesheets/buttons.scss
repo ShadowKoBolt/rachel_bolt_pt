@@ -1,0 +1,13 @@
+.btn-group__wide {
+  .btn {
+    margin-right: 20px;
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}
+
+.btn-primary {
+  border: none;
+  border-radius: 2px;
+}

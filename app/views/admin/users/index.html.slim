@@ -1,0 +1,22 @@
+.row
+  .col-sm-6
+    h1 = User.model_name.human(count: 2)
+  .col-sm-6.text-right
+    = link_to new_admin_user_path, class: 'btn btn-success' do
+      i.glyphicon.glyphicon-plus>
+      = t('admin.users.new.heading')
+table.table.table-striped
+  thead
+    tr
+      th = User.human_attribute_name(:first_name)
+      th = User.human_attribute_name(:email)
+      th
+  tbody
+    - @users.each do |user|
+      tr
+        td = user.first_name
+        td = mail_to user.email
+        td
+          - if user.reset_password_token?
+            = link_to nil, set_password_url(user.reset_password_token)
+

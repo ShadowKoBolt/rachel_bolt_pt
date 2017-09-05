@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title= t 'site_name'
+    = csrf_meta_tags
+    = render 'layouts/favicon'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    .container.layout--main-content
+      .row.mb6.text-center
+        .col-xs-12
+          = link_to root_path do
+            = image_tag 'logo.svg'
+
+      = render 'layouts/flash'
+      .row.mb7
+        .col-sm-3
+          = render 'layouts/nav_admin'
+        .col-sm-9
+          = yield
+      .row
+        .col-xs-12.text-center
+          = link_to 'Sign out', destroy_user_session_path, method: :delete
+

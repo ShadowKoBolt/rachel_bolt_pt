@@ -1,0 +1,133 @@
+h1.mb5.text-center Consent
+
+= form_for @user, url: consent_path do |f|
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :first_name
+        = f.text_field :first_name, class: 'form-control'
+    .col-sm-6
+      .form-group
+        = f.label :last_name
+        = f.text_field :last_name, class: 'form-control'
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :mobile
+        = f.text_field :mobile, class: 'form-control'
+    .col-sm-6
+      .form-group
+        = f.label :date_of_birth
+        = f.text_field :date_of_birth, class: 'form-control', type: 'date'
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :address
+        = f.text_area :address, rows: 8, class: 'form-control'
+    .col-sm-6
+      .form-group
+        = f.label :occupation
+        = f.text_field :occupation, class: 'form-control'
+      .form-group
+        = f.label :support_contact
+        = f.select :support_contact, f.object.options_for_support_contact, {}, class: 'form-control'
+      .form-group
+        = f.label :catchup_contact
+        = f.select :catchup_contact, f.object.options_for_catchup_contact, {}, class: 'form-control'
+      .form-group
+        = f.label :skype_username
+        = f.text_field :skype_username, class: 'form-control'
+  .row
+    .col-sm-6
+      = f.label :smoke
+      .radio
+        label
+          = f.radio_button :smoke, true
+          | Yes
+      .radio
+        label
+          = f.radio_button :smoke, false
+          | No
+    .col-sm-6
+      = f.label :pregnant
+      .radio
+        label
+          = f.radio_button :pregnant, true
+          | Yes
+      .radio
+        label
+          = f.radio_button :pregnant, false
+          | No
+  .row
+    .col-xs-12
+      label = t('.medical')
+
+  .row
+    .col-sm-4
+      .checkbox
+        label
+          = f.check_box :medical_heart
+          = User.human_attribute_name :medical_heart
+    .col-sm-4
+      .checkbox
+        label
+          = f.check_box :medical_arthritis
+          = User.human_attribute_name :medical_arthritis
+    .col-sm-4
+      .checkbox
+        label
+          = f.check_box :medical_epilepsy
+          = User.human_attribute_name :medical_epilepsy
+
+  .row
+    .col-sm-4
+      .checkbox
+        label
+          = f.check_box :medical_chest_pain
+          = User.human_attribute_name :medical_chest_pain
+    .col-sm-4
+      .checkbox
+        label
+          = f.check_box :medical_asthma
+          = User.human_attribute_name :medical_asthma
+    .col-sm-4
+      .checkbox
+        label
+          = f.check_box :medical_sports_injury
+          = User.human_attribute_name :medical_sports_injury
+
+  .row
+    .col-sm-4
+      .checkbox
+        label
+          = f.check_box :medical_dizzy
+          = User.human_attribute_name :medical_dizzy
+    .col-sm-4
+      .checkbox
+        label
+          = f.check_box :medical_bone_or_joint_problems
+          = User.human_attribute_name :medical_bone_or_joint_problems
+    .col-sm-4
+      .checkbox
+        label
+          = f.check_box :medical_depression
+          = User.human_attribute_name :medical_depression
+
+  .row
+    .col-sm-4
+      .checkbox
+        label
+          = f.check_box :medical_high_blood_pressure
+          = User.human_attribute_name :medical_high_blood_pressure
+    .col-sm-4
+      .checkbox
+        label
+          = f.check_box :medical_back_problems
+          = User.human_attribute_name :medical_back_problems
+    .col-sm-4
+
+  .row
+    .col-xs-12
+      .form-group
+        = f.label :medical_other
+        = f.text_field :medical_other, class: 'form-control'

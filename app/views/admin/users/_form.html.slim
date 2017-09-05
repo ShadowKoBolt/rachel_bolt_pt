@@ -1,0 +1,10 @@
+= form_for [:admin, @user] do |f|
+  = render 'layouts/errors', errors: f.object.errors.full_messages
+  .form-group
+    = f.label :first_name
+    = f.text_field :first_name, class: 'form-control'
+  .form-group
+    = f.label :email
+    = f.email_field :email, class: 'form-control'
+  .actions
+    = f.submit nil, class: 'btn btn-success'

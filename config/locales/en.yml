@@ -1,0 +1,42 @@
+en:
+  site_name: "Rachel Bolt Personal Training"
+  back: 'Back'
+  admin:
+    users:
+      new:
+        heading: "Add client"
+      create:
+        success: "Client created"
+  users:
+    set_password:
+      heading: 'Set your password'
+  consent:
+    show:
+      medical: 'Have you ever had or experienced?'
+  activerecord:
+    models:
+      user:
+        one: "Client"
+        other: "Clients"
+  activemodel:
+    attributes:
+      user:
+        support_contact: "Preferred method of contact for support"
+        catchup_contact: "Preferred method of contact for weekly and monthly check ups"
+        smoke: "Do you smoke?"
+        pregnant: "Are you pregnant?"
+        medical_other: "Other medical issues"
+  activerecord:
+    attributes:
+      user:
+        medical_heart: "Heart trouble/history"
+        medical_arthritis: "Arthritis"
+        medical_epilepsy: "Epilepsy"
+        medical_chest_pain: "Pain in the chest"
+        medical_asthma: "Asthma"
+        medical_sports_injury: "Sports injury"
+        medical_dizzy: "Faint or dizzy spells"
+        medical_bone_or_joint_problems: "Bone or joint problems"
+        medical_depression: "Depression"
+        medical_high_blood_pressure: "High Blood Pressure"
+        medical_back_problems: "Back Problems"
