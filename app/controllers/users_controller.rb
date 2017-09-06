@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @user = User::SetPassword.new(@user)
     if request.patch?
       if @user.validate(reset_password_params) && @user.save
+        sign_in(@user.model)
         redirect_to user_root_path, notice: 'Information saved'
       end
     end
