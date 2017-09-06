@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  def index; end
+  def index
+    redirect_to user_root_path if current_user
+  end
 
   private
 

@@ -13,4 +13,6 @@ Rails.application.routes.draw do
 
   get 'consent' => 'consent#show'
   patch 'consent' => 'consent#update'
+
+  get 'my_account' => 'user#home', as: 'user_root'
 end

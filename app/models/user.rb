@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :trackable, :validatable
 
+  def completed_consent_form?
+    Consent.new(self).validate(accept_1: '1', accept_2: '1')
+  end
+
   class AdminCreate < Reform::Form
     model :user
     properties :email, :first_name, :password, :reset_password_token
@@ -43,7 +47,7 @@ class User < ApplicationRecord
     property :accept_1, virtual: true
     property :accept_2, virtual: true
 
-    validates :first_name, :last_name, :mobile, presence: true
+    validates :first_name, :last_name, :mobile, :occupation, :address, :date_of_birth, presence: true
     validate :accept_terms
 
     def options_for_support_contact

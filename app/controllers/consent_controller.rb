@@ -1,14 +1,16 @@
 class ConsentController < SecureController
   def show
     @user = current_user
+    @user.smoke = false
+    @user.pregnant = false
     @user = User::Consent.new(@user)
   end
 
   def update
     @user = current_user
     @user = User::Consent.new(@user)
-    if @user.validate(user_params)
-      redirect_to root_path, notice: t('.success')
+    if @user.validate(user_params) && @user.save
+      redirect_to user_root_path, notice: t('.success')
     else
       render action: :show
     end

@@ -15,4 +15,10 @@ html
             = image_tag 'logo.svg'
 
       = render 'layouts/flash'
-      = yield
+      .row.mb6
+        .col-xs-12
+          = yield
+      - if current_user
+        .row
+          .col-xs-12.text-center
+            = link_to 'Sign out', destroy_user_session_path, method: :delete
