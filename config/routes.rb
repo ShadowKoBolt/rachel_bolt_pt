@@ -15,4 +15,8 @@ Rails.application.routes.draw do
   patch 'consent' => 'consent#update'
 
   get 'my_account' => 'user#home', as: 'user_root'
+  get 'one_off_payment' => 'payments#one_off_payment'
+  post 'one_off_payment' => 'payments#process_one_off_payment'
+
+  get 'payment/success' => 'payments#success'
 end

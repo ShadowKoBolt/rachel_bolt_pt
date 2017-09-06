@@ -1,0 +1,20 @@
+h1.text-center Make a one-off payment
+
+.row
+  .col-sm-6.col-sm-offset-3
+    = form_for @one_off_payment, url: one_off_payment_path do |f|
+      = render 'layouts/errors', errors: f.object.errors.full_messages
+      .form-group
+        = f.label :amount
+        .input-group
+          .input-group-addon £
+          = f.text_field :amount, class: 'form-control', placeholder: "Amount to pay e.g. 10.00"
+      .form-group
+        #card-element
+      .error.alert.alert-danger.hidden role="alert"
+
+      .hidden
+        = f.hidden_field :token
+
+      .actions.text-right
+        = f.submit nil, class: 'btn btn-primary btn-lg', data: { disable_with: false }

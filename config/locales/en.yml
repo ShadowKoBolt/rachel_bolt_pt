@@ -45,3 +45,7 @@ en:
         medical_depression: "Depression"
         medical_high_blood_pressure: "High Blood Pressure"
         medical_back_problems: "Back Problems"
+  helpers:
+    submit:
+      one_off_payment:
+        create: "Make a payment"
