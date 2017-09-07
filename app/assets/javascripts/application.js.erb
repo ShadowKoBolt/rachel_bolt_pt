@@ -20,7 +20,7 @@ document.addEventListener("turbolinks:load", function() {
 
 
   if ($('#card-element').length > 0) {
-    var stripe = Stripe('pk_test_JiTB1PCW3WRsvRTDbQePyQ3D');
+    var stripe = Stripe('<%= ENV['STRIPE_PUBLIC_KEY'] %>');
     var elements = stripe.elements();
     var card = elements.create('card');
     card.mount('#card-element');
