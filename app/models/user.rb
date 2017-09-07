@@ -8,6 +8,10 @@ class User < ApplicationRecord
     Consent.new(self).validate(accept_1: '1', accept_2: '1')
   end
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
   class AdminCreate < Reform::Form
     model :user
     properties :email, :first_name, :password, :reset_password_token

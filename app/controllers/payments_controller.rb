@@ -9,7 +9,7 @@ class PaymentsController < SecureController
       charge = Stripe::Charge.create(amount: @one_off_payment.amount_in_pence,
                                      receipt_email: current_user.email,
                                      currency: "gbp",
-                                     description: "Rachel Bolt PT - One off payment",
+                                     description: "Rachel Bolt PT - One off payment from #{current_user.name}",
                                      source: @one_off_payment.token)
       if charge.status == 'succeeded'
         redirect_to payment_success_path
