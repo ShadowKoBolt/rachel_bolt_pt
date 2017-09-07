@@ -32,6 +32,7 @@ document.addEventListener("turbolinks:load", function() {
       if (result.token) {
         var tokenInput = document.querySelector('#one_off_payment_token');
         tokenInput.value = result.token.id;
+        $('#card-element').parents('form').submit();
       } else if (result.error) {
         errorElement.textContent = result.error.message;
         errorElement.classList.remove('hidden')
@@ -43,12 +44,9 @@ document.addEventListener("turbolinks:load", function() {
     });
 
     document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
       var form = document.querySelector('form');
       stripe.createToken(card).then(setOutcome);
-      var tokenInput = document.querySelector('#one_off_payment_token');
-      if (tokenInput.value === '') {
-        e.preventDefault();
-      }
     });
   }
 });
