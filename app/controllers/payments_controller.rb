@@ -7,6 +7,7 @@ class PaymentsController < SecureController
     @one_off_payment = OneOffPayment.new(one_off_payment_params)
     if @one_off_payment.valid?
       charge = Stripe::Charge.create(amount: @one_off_payment.amount_in_pence,
+                                     receipt_email: current_user.email,
                                      currency: "gbp",
                                      description: "Rachel Bolt PT - One off payment",
                                      source: @one_off_payment.token)

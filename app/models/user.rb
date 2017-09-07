@@ -43,7 +43,7 @@ class User < ApplicationRecord
                :catchup_contact, :skype_username, :smoke, :pregnant, :medical_heart, :medical_chest_pain,
                :medical_dizzy, :medical_high_blood_pressure, :medical_arthritis, :medical_asthma,
                :medical_bone_or_joint_problems, :medical_back_problems, :medical_epilepsy, :medical_sports_injury,
-               :medical_depression, :medical_other
+               :medical_depression, :medical_other, :stripe_customer_id, :email
     property :accept_1, virtual: true
     property :accept_2, virtual: true
 
@@ -56,6 +56,14 @@ class User < ApplicationRecord
 
     def options_for_catchup_contact
       [ 'Skype', 'Phone', 'Email' ]
+    end
+
+    def save
+      customer = Stripe::Customer.create(
+        description: "#{first_name} #{last_name}",
+        email: email)
+      self.stripe_customer_id = customer.id
+      super
     end
 
     private
