@@ -32,7 +32,7 @@ class User < ApplicationRecord
 
     validates :email, presence: true, email: true
     validates :password, :password_confirmation, presence: true
-    validates :password, confirmation: true, length: { minimum: 5 }
+    validates :password, confirmation: true, length: { minimum: 4 }
     validates_uniqueness_of :email
 
     def save
