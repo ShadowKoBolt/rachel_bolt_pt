@@ -1,15 +1,10 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require rails-ujs
-//= require turbolinks
 //= require stripe
 
 
-document.addEventListener("turbolinks:load", function() {
-  if ($('#my-video').length > 0) {
-    videojs('my-video');
-  }
-
+$(document).ready(function() {
   var changeCatchupContactInput = function() {
     if ($('#user_catchup_contact').val() === 'Skype') {
       $('[data-js-id="skype-username"]').removeClass('hidden');

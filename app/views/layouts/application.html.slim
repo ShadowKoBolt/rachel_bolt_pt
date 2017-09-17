@@ -6,11 +6,9 @@ html
     title= t 'site_name'
     = csrf_meta_tags
     = render 'layouts/favicon'
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = stylesheet_link_tag    'https://vjs.zencdn.net/6.2.7/video-js.css', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'https://vjs.zencdn.net/6.2.7/video.js', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'youtube.min', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag    'https://vjs.zencdn.net/6.2.7/video-js.css', media: 'all'
+    = javascript_include_tag 'application'
   body
     .container.layout--main-content
       .row.mb6.text-center
@@ -26,3 +24,5 @@ html
         .row
           .col-xs-12.text-center
             = link_to 'Sign out', destroy_user_session_path, method: :delete
+    = javascript_include_tag 'https://vjs.zencdn.net/6.2.7/video.js'
+    = javascript_include_tag 'youtube.min'
