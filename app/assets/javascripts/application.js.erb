@@ -6,6 +6,10 @@
 
 
 document.addEventListener("turbolinks:load", function() {
+  if ($('#my-video').length > 0) {
+    videojs('my-video');
+  }
+
   var changeCatchupContactInput = function() {
     if ($('#user_catchup_contact').val() === 'Skype') {
       $('[data-js-id="skype-username"]').removeClass('hidden');

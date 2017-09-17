@@ -2,9 +2,7 @@
   - if @video.youtube_url?
     = render 'youtube', video: @video
   - else
-    video id="my-video" class="mb4 center video-js vjs-big-play-centered vjs-16-9" controls=true preload="auto" width="640" height="264" poster="MY_VIDEO_POSTER.jpg" data-setup="{fluid: true}"
-      source src=@video.file.url type='video/mp4'
-
+    = render 'mp4', video: @video
   p
     | Please note these videos are from a few different sources and are an interim measure.  I will be doing my own
     |  videos very soon.  Some of these exercises are not exactly how I would like you to do them so please refer to
