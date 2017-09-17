@@ -8,6 +8,8 @@ en:
       create:
         success: "Client created"
     videos:
+      index:
+        confirm_destroy: "Are you sure?"
       new:
         heading: "Add video"
       edit:
@@ -16,6 +18,8 @@ en:
         success: "Video created"
       update:
         success: "Video updated"
+      destroy:
+        success: "Video removed"
   users:
     set_password:
       heading: 'Set your password'

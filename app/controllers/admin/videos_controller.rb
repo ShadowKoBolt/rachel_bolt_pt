@@ -30,6 +30,12 @@ module Admin
       end
     end
 
+    def destroy
+      @video = Video.friendly.find(params[:id])
+      @video.destroy
+      redirect_to admin_videos_path, notice: t('.success')
+    end
+
     private
 
     def video_params
