@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917102121) do
+ActiveRecord::Schema.define(version: 20170917151201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20170917102121) do
     t.datetime "file_updated_at"
     t.string "slug"
     t.string "name"
+    t.string "youtube_url"
     t.index ["slug"], name: "index_videos_on_slug", unique: true
   end
 

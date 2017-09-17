@@ -33,7 +33,8 @@ module Admin
     private
 
     def video_params
-      params.require(:video).permit(:name, :slug, :file)
+      params[:video].delete(:slug) if params[:video][:slug].blank?
+      params.require(:video).permit(:name, :slug, :file, :youtube_url)
     end
   end
 end
