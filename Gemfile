@@ -5,13 +5,16 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'aws-sdk'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'email_validator'
 gem 'figaro'
+gem 'friendly_id'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'paperclip', '~> 5.0.0'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.3'

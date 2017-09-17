@@ -1,0 +1,24 @@
+.row
+  .col-sm-6
+    h1 = Video.model_name.human(count: 2)
+  .col-sm-6.text-right
+    = link_to new_admin_video_path, class: 'btn btn-success' do
+      i.glyphicon.glyphicon-plus>
+      = t('admin.videos.new.heading')
+table.table.table-striped
+  thead
+    tr
+      th = Video.human_attribute_name(:name)
+      th = Video.human_attribute_name(:slug)
+      th
+  tbody
+    - @videos.each do |video|
+      tr
+        td = video.name
+        td = link_to video.slug, video_path(video)
+        td
+          .btn-group
+            = link_to t('.edit'), edit_admin_video_path(video), class: 'btn btn-warning'
+            = link_to t('.destroy'), admin_video_path(video), method: :delete, data: { confirm: t('.confirm_destroy') },
+              class: 'btn btn-danger'
+

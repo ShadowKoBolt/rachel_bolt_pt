@@ -7,6 +7,15 @@ en:
         heading: "Add client"
       create:
         success: "Client created"
+    videos:
+      new:
+        heading: "Add video"
+      edit:
+        heading: "Edit video"
+      create:
+        success: "Video created"
+      update:
+        success: "Video updated"
   users:
     set_password:
       heading: 'Set your password'
@@ -21,6 +30,9 @@ en:
       user:
         one: "Client"
         other: "Clients"
+      video:
+        one: "Video"
+        other: "Videos"
   activemodel:
     attributes:
       user:

@@ -1,0 +1,8 @@
+.row
+  .col-sm-6
+    h1 = t '.heading'
+  .col-sm-6.text-right
+    = link_to admin_videos_path, class: 'btn btn-danger' do
+      i.glyphicon.glyphicon-chevron-left>
+      = t 'back'
+= render 'form'

@@ -1,0 +1,16 @@
+= form_for [:admin, @video], html: { multipart: true } do |f|
+  = render 'layouts/errors', errors: f.object.errors.full_messages
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :slug do
+      = Video.human_attribute_name(:slug)
+      small< optional
+    .help-block URL which the video appears on - will be generated automatically if left blank
+    = f.text_field :slug, class: 'form-control'
+  .form-group
+    = f.label :file
+    = f.file_field :file, class: 'form-control'
+  .actions
+    = f.submit nil, class: 'btn btn-success'

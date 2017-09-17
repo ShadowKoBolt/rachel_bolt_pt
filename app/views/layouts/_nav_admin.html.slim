@@ -1,3 +1,5 @@
 ul.nav.nav-pills.nav-stacked
   li class=('active' if controller_path == 'admin/users')
     = link_to User.model_name.human(count: 2), admin_users_path
+  li class=('active' if controller_path == 'admin/videos')
+    = link_to Video.model_name.human(count: 2), admin_videos_path

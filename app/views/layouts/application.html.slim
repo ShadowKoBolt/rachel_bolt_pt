@@ -7,7 +7,9 @@ html
     = csrf_meta_tags
     = render 'layouts/favicon'
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'http://vjs.zencdn.net/6.2.7/video-js.css', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'http://vjs.zencdn.net/6.2.7/video.js', 'data-turbolinks-track': 'reload'
   body
     .container.layout--main-content
       .row.mb6.text-center
