@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
@@ -25,14 +25,25 @@ gem 'stripe'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
-  gem 'pry-rails'
-  gem 'pry-nav'
   gem 'i18n-debug'
+  gem 'pry-nav'
+  gem 'pry-rails'
+  gem 'rspec-rails', '~> 3.7'
+end
+
+group :test do
+  gem 'capybara', '~> 2.15'
+  gem 'poltergeist', '~> 1.16'
 end
 
 group :development do
+  gem 'brakeman'
+  gem 'bundle-audit'
   gem 'letter_opener'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'overcommit', '~> 0.41'
+  gem 'rubocop'
+  gem 'rubocop-rspec'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
