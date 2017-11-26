@@ -1,7 +1,5 @@
 class CreateVideos < ActiveRecord::Migration[5.1]
   def change
-    create_table :videos do |t|
-      t.timestamps
-    end
+    create_table :videos, &:timestamps
   end
 end

@@ -8,7 +8,8 @@ module Admin
     private
 
     def authorize_admin!
-      redirect_to(root_path, error: 'You are not authorized to view this content') unless current_user.admin?
+      message = 'You are not authorized to view this content'
+      redirect_to(root_path, error: message) unless current_user.admin?
     end
   end
 end

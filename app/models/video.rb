@@ -4,5 +4,5 @@ class Video < ApplicationRecord
 
   has_attached_file :file
   validates :name, presence: true, uniqueness: true
-  validates_attachment_content_type :file, :content_type => ["video/mp4"]
+  validates_attachment_content_type :file, content_type: ['video/mp4']
 end

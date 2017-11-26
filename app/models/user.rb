@@ -17,7 +17,7 @@ class User < ApplicationRecord
     properties :email, :first_name, :password, :reset_password_token
     validates :first_name, presence: true
     validates :email, presence: true, email: true
-    validates_uniqueness_of :email
+    validates :email, uniqueness: true
 
     def save
       self.password = SecureRandom.hex
@@ -28,12 +28,13 @@ class User < ApplicationRecord
 
   class SetPassword < Reform::Form
     model :user
-    properties :email, :password, :password_confirmation, :first_name, :reset_password_token
+    properties :email, :password, :password_confirmation, :first_name,
+               :reset_password_token
 
     validates :email, presence: true, email: true
     validates :password, :password_confirmation, presence: true
     validates :password, confirmation: true, length: { minimum: 4 }
-    validates_uniqueness_of :email
+    validates :email, uniqueness: true
 
     def save
       self.reset_password_token = nil
@@ -43,29 +44,34 @@ class User < ApplicationRecord
 
   class Consent < Reform::Form
     model :user
-    properties :first_name, :last_name, :date_of_birth, :address, :mobile, :occupation, :support_contact,
-               :catchup_contact, :skype_username, :smoke, :pregnant, :medical_heart, :medical_chest_pain,
-               :medical_dizzy, :medical_high_blood_pressure, :medical_arthritis, :medical_asthma,
-               :medical_bone_or_joint_problems, :medical_back_problems, :medical_epilepsy, :medical_sports_injury,
-               :medical_depression, :medical_other, :stripe_customer_id, :email
+    properties :first_name, :last_name, :date_of_birth, :address, :mobile,
+               :occupation, :support_contact, :catchup_contact, :skype_username,
+               :smoke, :pregnant, :medical_heart, :medical_chest_pain,
+               :medical_dizzy, :medical_high_blood_pressure, :medical_arthritis,
+               :medical_asthma, :medical_bone_or_joint_problems,
+               :medical_back_problems, :medical_epilepsy,
+               :medical_sports_injury, :medical_depression, :medical_other,
+               :stripe_customer_id, :email
     property :accept_1, virtual: true
     property :accept_2, virtual: true
 
-    validates :first_name, :last_name, :mobile, :occupation, :address, :date_of_birth, presence: true
+    validates :first_name, :last_name, :mobile, :occupation, :address,
+              :date_of_birth, presence: true
     validate :accept_terms
 
     def options_for_support_contact
-      [ 'Whatsapp', 'Email', 'Text', 'Facebook messenger' ]
+      ['Whatsapp', 'Email', 'Text', 'Facebook messenger']
     end
 
     def options_for_catchup_contact
-      [ 'Skype', 'Phone', 'Email' ]
+      %w[Skype Phone Email]
     end
 
     def save
       customer = Stripe::Customer.create(
         description: "#{first_name} #{last_name}",
-        email: email)
+        email: email
+      )
       self.stripe_customer_id = customer.id
       super
     end

@@ -19,11 +19,16 @@ class ConsentController < SecureController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :date_of_birth, :address, :mobile, :occupation,
-                                 :support_contact, :catchup_contact, :skype_username, :smoke, :pregnant, :medical_heart,
-                                 :medical_chest_pain, :medical_dizzy, :medical_high_blood_pressure, :medical_arthritis,
-                                 :medical_asthma, :medical_bone_or_joint_problems, :medical_back_problems,
-                                 :medical_epilepsy, :medical_sports_injury, :medical_depression, :medical_other,
-                                 :accept_1, :accept_2)
+    attributes = %i[first_name last_name date_of_birth address mobile
+                    occupation support_contact catchup_contact skype_username
+                    smoke pregnant accept_1 accept_2].merge(medical_atttributes)
+    params.require(:user).permit(attributes)
+  end
+
+  def medical_atttributes
+    %i[medical_heart medical_chest_pain medical_dizzy
+       medical_high_blood_pressure medical_arthritis medical_asthma
+       medical_bone_or_joint_problems medical_back_problems medical_epilepsy
+       medical_sports_injury medical_depression medical_other]
   end
 end

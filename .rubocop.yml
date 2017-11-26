@@ -1,0 +1,9 @@
+AllCops:
+  Exclude:
+    - db/**/*
+
+Rails:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
