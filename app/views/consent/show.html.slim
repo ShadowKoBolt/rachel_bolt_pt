@@ -2,6 +2,7 @@ h1.mb5.text-center Consent
 
 = form_for @user, url: consent_path do |f|
   = render 'layouts/errors', errors: f.object.errors.full_messages
+
   .row.mb3
     .col-sm-4
       .form-group
@@ -15,6 +16,7 @@ h1.mb5.text-center Consent
       .form-group
         = f.label :mobile
         = f.text_field :mobile, class: 'form-control'
+
   .row.mb3
     .col-sm-6
       .form-group
@@ -24,6 +26,7 @@ h1.mb5.text-center Consent
       .form-group
         = f.label :occupation
         = f.text_field :occupation, class: 'form-control'
+
   .row.mb5
     .col-sm-6
       .form-group
@@ -32,34 +35,32 @@ h1.mb5.text-center Consent
     .col-sm-6
       .form-group
         = f.label :support_contact
-        = f.select :support_contact, f.object.options_for_support_contact, {}, class: 'form-control'
+        = f.select :support_contact,
+          User::ConsentForm::OPTIONS_FOR_SUPPORT_CONTACT,
+          {},
+          class: 'form-control'
       .form-group
         = f.label :catchup_contact
-        = f.select :catchup_contact, f.object.options_for_catchup_contact, {}, class: 'form-control'
+        = f.select :catchup_contact,
+          User::ConsentForm::OPTIONS_FOR_CATCHUP_CONTACT,
+          {},
+          class: 'form-control'
       .form-group data-js-id='skype-username'
         = f.label :skype_username
         = f.text_field :skype_username, class: 'form-control'
+
   .row.mb5
     .col-sm-6
-      = f.label :smoke
-      .radio
+      .checkbox
         label
-          = f.radio_button :smoke, true
-          | Yes
-      .radio
-        label
-          = f.radio_button :smoke, false
-          | No
+          = f.check_box :smoke
+          = t('helpers.label.user_consent.smoke')
     .col-sm-6
-      = f.label :pregnant
-      .radio
+      .checkbox
         label
-          = f.radio_button :pregnant, true
-          | Yes
-      .radio
-        label
-          = f.radio_button :pregnant, false
-          | No
+          = f.check_box :pregnant
+          = t('helpers.label.user_consent.pregnant')
+
   .row
     .col-xs-12
       label = t('.medical')
@@ -69,63 +70,63 @@ h1.mb5.text-center Consent
       .checkbox
         label
           = f.check_box :medical_heart
-          = User.human_attribute_name :medical_heart
+          = t('helpers.label.user_consent.medical_heart')
     .col-sm-4
       .checkbox
         label
           = f.check_box :medical_arthritis
-          = User.human_attribute_name :medical_arthritis
+          = t('helpers.label.user_consent.medical_arthritis')
     .col-sm-4
       .checkbox
         label
           = f.check_box :medical_epilepsy
-          = User.human_attribute_name :medical_epilepsy
+          = t('helpers.label.user_consent.medical_epilepsy')
 
   .row
     .col-sm-4
       .checkbox
         label
           = f.check_box :medical_chest_pain
-          = User.human_attribute_name :medical_chest_pain
+          = t('helpers.label.user_consent.medical_chest_pain')
     .col-sm-4
       .checkbox
         label
           = f.check_box :medical_asthma
-          = User.human_attribute_name :medical_asthma
+          = t('helpers.label.user_consent.medical_asthma')
     .col-sm-4
       .checkbox
         label
           = f.check_box :medical_sports_injury
-          = User.human_attribute_name :medical_sports_injury
+          = t('helpers.label.user_consent.medical_sports_injury')
 
   .row
     .col-sm-4
       .checkbox
         label
           = f.check_box :medical_dizzy
-          = User.human_attribute_name :medical_dizzy
+          = t('helpers.label.user_consent.medical_dizzy')
     .col-sm-4
       .checkbox
         label
           = f.check_box :medical_bone_or_joint_problems
-          = User.human_attribute_name :medical_bone_or_joint_problems
+          = t('helpers.label.user_consent.medical_bone_or_joint_problems')
     .col-sm-4
       .checkbox
         label
           = f.check_box :medical_depression
-          = User.human_attribute_name :medical_depression
+          = t('helpers.label.user_consent.medical_depression')
 
   .row.mb4
     .col-sm-4
       .checkbox
         label
           = f.check_box :medical_high_blood_pressure
-          = User.human_attribute_name :medical_high_blood_pressure
+          = t('helpers.label.user_consent.medical_high_blood_pressure')
     .col-sm-4
       .checkbox
         label
           = f.check_box :medical_back_problems
-          = User.human_attribute_name :medical_back_problems
+          = t('helpers.label.user_consent.medical_back_problems')
     .col-sm-4
 
   .row.mb5
@@ -139,19 +140,19 @@ h1.mb5.text-center Consent
       .checkbox
         = f.label :accept_1 do
           = f.check_box :accept_1
-          | I understand that Rachel is not able to provide me with medical advice with regard to any medical conditions I may have and that this information is used only as a guideline to the limitations of my ability to exercise. I will not hold Rachel liable in any way for any injuries that may occur while I am training.
+          = t('helpers.label.user_consent.accept_1')
 
   .row
     .col-xs-12
       .checkbox
         = f.label :accept_2 do
           = f.check_box :accept_2
-          = "I have read the "
-          = link_to 'terms and conditions', href='#', data: { toggle: 'modal', target: '#terms-and-conditions' }
+          = t('helpers.label.user_consent.accept_2_html',
+              link: link_to('terms and conditions', href='#', data: { toggle: 'modal', target: '#terms-and-conditions' }))
 
   .row
     .col-xs-12.text-right
-      = f.submit t('.submit'), class: 'btn btn-primary btn-lg'
+      = f.submit nil, class: 'btn btn-primary btn-lg'
 
 .modal.fade role="dialog" tabindex="-1" id="terms-and-conditions"
   .modal-dialog role="document"

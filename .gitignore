@@ -22,3 +22,7 @@
 /config/application.yml
 
 public/system/
+
+coverage
+
+spec/examples.txt

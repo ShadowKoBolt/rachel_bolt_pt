@@ -6,12 +6,12 @@ module Admin
 
     def new
       @user = User.new
-      @user = User::AdminCreate.new(@user)
+      @user = User::AdminCreateForm.new(@user)
     end
 
     def create
       @user = User.new
-      @user = User::AdminCreate.new(@user)
+      @user = User::AdminCreateForm.new(@user)
       if @user.validate(user_params) && @user.save
         redirect_to admin_users_path, notice: t('.success')
       else

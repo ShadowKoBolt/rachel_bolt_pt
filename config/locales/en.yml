@@ -1,67 +1,80 @@
 en:
-  site_name: "Rachel Bolt Personal Training"
+  site_name: 'Rachel Bolt Personal Training'
   back: 'Back'
   admin:
     users:
       new:
-        heading: "Add client"
+        heading: 'Add client'
       create:
-        success: "Client created"
+        success: 'Client created'
     videos:
       index:
-        confirm_destroy: "Are you sure?"
+        confirm_destroy: 'Are you sure?'
       new:
-        heading: "Add video"
+        heading: 'Add video'
       edit:
-        heading: "Edit video"
+        heading: 'Edit video'
       create:
-        success: "Video created"
+        success: 'Video created'
       update:
-        success: "Video updated"
+        success: 'Video updated'
       destroy:
-        success: "Video removed"
+        success: 'Video removed'
+  application:
+    index:
+      sign_in: 'Sign in'
   users:
     set_password:
       heading: 'Set your password'
+      success: 'Information saved'
   consent:
     show:
       medical: 'Have you ever had or experienced?'
       submit: 'Submit'
     update:
       success: 'Information saved'
+  activemodel:
+    attributes:
+      user/consent:
+        accept_1: 'Liability waiver'
+        accept_2: 'Terms and conditions'
   activerecord:
     models:
       user:
-        one: "Client"
-        other: "Clients"
+        one: 'Client'
+        other: 'Clients'
       video:
-        one: "Video"
-        other: "Videos"
-  activemodel:
+        one: 'Video'
+        other: 'Videos'
     attributes:
-      user:
-        support_contact: "Preferred method of contact for support"
-        catchup_contact: "Preferred method of contact for weekly and monthly check ups"
-        smoke: "Do you smoke?"
-        pregnant: "Are you pregnant?"
-        medical_other: "Other medical issues"
-        accept_1: 'Liability waiver'
-        accept_2: 'Terms & conditions'
-  activerecord:
-    attributes:
-      user:
-        medical_heart: "Heart trouble/history"
-        medical_arthritis: "Arthritis"
-        medical_epilepsy: "Epilepsy"
-        medical_chest_pain: "Pain in the chest"
-        medical_asthma: "Asthma"
-        medical_sports_injury: "Sports injury"
-        medical_dizzy: "Faint or dizzy spells"
-        medical_bone_or_joint_problems: "Bone or joint problems"
-        medical_depression: "Depression"
-        medical_high_blood_pressure: "High Blood Pressure"
-        medical_back_problems: "Back Problems"
   helpers:
     submit:
       one_off_payment:
-        create: "Make a payment"
+        create: 'Make a payment'
+      user:
+        update: 'Set my password'
+      user_consent:
+        update: 'Submit'
+    label:
+      user_consent:
+        support_contact: 'Preferred method of contact for support'
+        catchup_contact: 'Preferred method of contact for weekly and monthly check ups'
+        smoke: 'I am a smoker'
+        pregnant: 'I am pregnant'
+        medical_other: 'Other medical issues'
+        accept_1: 'Liability waiver'
+        accept_2: 'Terms & conditions'
+        medical_heart: 'Heart trouble/history'
+        medical_arthritis: 'Arthritis'
+        medical_epilepsy: 'Epilepsy'
+        medical_chest_pain: 'Pain in the chest'
+        medical_asthma: 'Asthma'
+        medical_sports_injury: 'Sports injury'
+        medical_dizzy: 'Faint or dizzy spells'
+        medical_bone_or_joint_problems: 'Bone or joint problems'
+        medical_depression: 'Depression'
+        medical_high_blood_pressure: 'High Blood Pressure'
+        medical_back_problems: 'Back problems'
+        accept_1: 'I understand that Rachel is not able to provide me with medical advice with regard to any medical conditions I may have and that this information is used only as a guideline to the limitations of my ability to exercise. I will not hold Rachel liable in any way for any injuries that may occur while I am training.'
+        accept_2: 'I have read the terms and conditions'
+        accept_2_html: 'I have read the %{link}'

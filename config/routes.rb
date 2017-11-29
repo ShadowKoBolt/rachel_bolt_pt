@@ -1,4 +1,4 @@
-t stRails.application.routes.draw do
+Rails.application.routes.draw do
   get 'video/:id' => 'videos#show', as: 'video'
 
   devise_for :users
